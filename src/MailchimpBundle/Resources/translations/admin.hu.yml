@@ -1,0 +1,8 @@
+mailchimp:
+    permission: Mailchimp beállítások
+    settings:
+        title: Mailchimp Beállítások
+        help:
+            api_key: 'Szükséges API kulcs a Mailchimppel való kommunikációhoz. További informácio: <a href="https://mailchimp.com/help/about-api-keys/#Find_or_generate_your_API_key" target="_blank">https://mailchimp.com/help/about-api-keys/#Find_or_generate_your_API_key</a>'
+            server_prefix: 'Jelentkezz be a Mailchimp accountodba, és nézd meg, hogy milyen URL jelenik meg a böngészőben. Például: <em>https://us19.admin.mailchimp.com/</em> - ebben az esetben a Server prefix az <em>us19</em>.'
+            list_id: 'A lista azonosítója, amelyre feliratkoznak a felhasználók. Segítség a kiderítéséhez: <a href="https://mailchimp.com/help/find-audience-id/" target="_blank">https://mailchimp.com/help/find-audience-id/</a>'

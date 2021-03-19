@@ -1,0 +1,48 @@
+{
+  "name": "wgg/mailchimp-bundle",
+  "type": "pimcore-bundle",
+  "license": "Apache-2.0",
+  "description": "Pimcore Mailchimp Bundle",
+  "keywords": [
+    "pimcore",
+    "mailchimp"
+  ],
+  "homepage": "https://github.com/WebGardenGroup/mailchimp-bundle",
+  "authors": [
+    {
+      "name": "WebgardenGroup",
+      "email": "developer@webgarden.eu",
+      "homepage": "https://webgarden.eu/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Wg\\MailchimpBundle\\": "src/MailchimpBundle/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "Wg\\MailchimpBundle\\WgMailchimpBundle"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*",
+    "pimcore/pimcore": "^6.0",
+    "mailchimp/marketing": "^3.0.0"
+  },
+  "require-dev": {
+    "codeception/codeception": "~2.4.0",
+    "phpstan/phpstan": "^0.12",
+    "phpstan/phpstan-symfony": "^0.12",
+    "symplify/easy-coding-standard": "^5.4"
+  }
+}
