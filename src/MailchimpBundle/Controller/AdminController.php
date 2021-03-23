@@ -2,17 +2,16 @@
 
 namespace Wgg\MailchimpBundle\Controller;
 
+use function array_filter;
 use Exception;
+use function is_array;
+use function json_decode;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
-
-use function array_filter;
-use function is_array;
-use function json_decode;
 
 class AdminController extends BaseAdminController
 {

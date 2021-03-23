@@ -4,7 +4,6 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 return (new Config())
-    ->setUsingCache(false)
     ->setRules([
         '@Symfony' => true,
         'phpdoc_var_without_name' => false,
