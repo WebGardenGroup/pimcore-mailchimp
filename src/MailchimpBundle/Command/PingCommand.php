@@ -20,7 +20,7 @@ class PingCommand extends Command
         $this->apiClient = $apiClient;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Pings mailchimp server');

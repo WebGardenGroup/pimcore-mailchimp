@@ -6,6 +6,8 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 
 class WgMailchimpBundle extends AbstractPimcoreBundle
 {
+    const CACHE_TAG = 'wg_mailchimp_lists';
+
     public function getJsPaths()
     {
         return [

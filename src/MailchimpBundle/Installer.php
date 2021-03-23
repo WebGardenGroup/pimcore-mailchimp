@@ -27,7 +27,7 @@ class Installer extends AbstractInstaller
         return true;
     }
 
-    public function install()
+    public function install(): void
     {
         foreach (self::PERMISSIONS as $permission) {
             $definition = Definition::getByKey($permission);
@@ -40,7 +40,7 @@ class Installer extends AbstractInstaller
         }
     }
 
-    public function uninstall()
+    public function uninstall(): void
     {
         $db = Db::get();
 
@@ -58,4 +58,3 @@ class Installer extends AbstractInstaller
         }
     }
 }
-

@@ -1,7 +1,6 @@
-/* eslint-disable */
 pimcore.registerNS('pimcore.plugin.WgMailchimpBundle.settings')
 
-pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
+pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
   initialize: function () {
     this.getData()
   },
@@ -12,16 +11,14 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
         this.values = Ext.decode(response.responseText)
 
         this.getTabPanel()
-
       }.bind(this)
     })
   },
 
   getTabPanel: function () {
-    var config = this.values.config
+    const config = this.values.config
 
     if (!this.panel) {
-
       this.panel = Ext.create('Ext.panel.Panel', {
         id: 'mailchimp_settings',
         title: t('mailchimp.settings.title'),
@@ -33,12 +30,12 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
 
       this.panel.on('destroy', function () {
         pimcore.globalmanager.remove('wg_mailchimp_settings')
-      }.bind(this))
+      })
 
-      var listIds = []
+      const listIds = []
 
       if (config.list_id) {
-        for (var i = 0; i < config.list_id.length; i++) {
+        for (let i = 0; i < config.list_id.length; i++) {
           listIds.push({
             fieldLabel: 'Audience ID',
             name: 'config.list_id',
@@ -61,7 +58,7 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
         xtype: 'button',
         text: 'Add',
         handler: function (button) {
-          var fieldset = button.up('fieldset')
+          const fieldset = button.up('fieldset')
           fieldset.insert(fieldset.items.length - 2, {
             fieldLabel: 'Audience ID',
             name: 'config.list_id',
@@ -84,6 +81,11 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
           labelWidth: 250
         },
         buttons: [
+          {
+            text: t('mailchimp.validate_settings'),
+            handler: this.validateSettings.bind(this),
+            iconCls: 'pimcore_icon_inspect'
+          },
           {
             text: t('save'),
             handler: this.save.bind(this),
@@ -131,7 +133,7 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
 
       this.panel.add(this.layout)
 
-      var tabPanel = Ext.getCmp('pimcore_panel_tabs')
+      const tabPanel = Ext.getCmp('pimcore_panel_tabs')
       tabPanel.add(this.panel)
       tabPanel.setActiveItem(this.panel)
 
@@ -141,17 +143,13 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
     return this.panel
   },
 
-  minify: function () {
-    alert('minify')
-  },
-
   activate: function () {
-    var tabPanel = Ext.getCmp('pimcore_panel_tabs')
+    const tabPanel = Ext.getCmp('pimcore_panel_tabs')
     tabPanel.setActiveItem('mailchimp_settings')
   },
 
   save: function () {
-    var values = this.layout.getForm().getFieldValues()
+    const values = this.layout.getForm().getFieldValues()
 
     Ext.Ajax.request({
       url: Routing.generate('wg_mailchimp_admin_savesettings'),
@@ -161,10 +159,9 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
       },
       success: function (response) {
         try {
-          var res = Ext.decode(response.responseText)
+          const res = Ext.decode(response.responseText)
           if (res.success) {
             pimcore.helpers.showNotification(t('success'), t('saved_successfully'), 'success')
-
           } else {
             pimcore.helpers.showNotification(t('error'), t('error_general'),
               'error', t(res.message))
@@ -172,6 +169,25 @@ pimcore.plugin.WgMailchimpBundle.settings = Class.create(pimcore.plugin.admin, {
         } catch (e) {
           pimcore.helpers.showNotification(t('error'), t('error_general'), 'error')
         }
+      }
+    })
+  },
+
+  validateSettings: function () {
+    const values = this.layout.getForm().getFieldValues()
+
+    Ext.Ajax.request({
+      url: Routing.generate('wg_mailchimp_admin_validatesettings'),
+      method: 'POST',
+      params: {
+        data: Ext.encode(values)
+      },
+      success: function (response) {
+        console.log(response)
+        pimcore.helpers.showNotification(t('success'), t('mailchimp.validation_successful'), 'success')
+      },
+      failure: function (response) {
+        pimcore.helpers.showNotification(t('error'), t('error_general'), 'error', response.responseText)
       }
     })
   }

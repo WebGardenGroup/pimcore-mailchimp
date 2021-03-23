@@ -1,4 +1,6 @@
 mailchimp:
+    validate_settings: Beállítások ellenőrzése
+    validation_successful: Sikeresen ellenőrzés
     permission: Mailchimp beállítások
     settings:
         title: Mailchimp Beállítások

@@ -40,9 +40,19 @@
     "mailchimp/marketing": "^3.0.0"
   },
   "require-dev": {
-    "codeception/codeception": "~2.4.0",
     "phpstan/phpstan": "^0.12",
     "phpstan/phpstan-symfony": "^0.12",
-    "symplify/easy-coding-standard": "^5.4"
+    "friendsofphp/php-cs-fixer": "^2.18"
+  },
+  "scripts": {
+    "phpstan": [
+      "@composer install",
+      "@phpstan-general",
+      "@phpstan-tests"
+    ],
+    "phpstan-general": [
+      "bin/console cache:warmup --env=dev",
+      "phpstan analyse -c phpstan.neon"
+    ]
   }
 }

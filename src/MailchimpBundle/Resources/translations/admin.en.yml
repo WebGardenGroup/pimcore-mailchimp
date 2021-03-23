@@ -1,4 +1,6 @@
 mailchimp:
+    validate_settings: Validate settings
+    validation_successful: Validation successfull
     permission: Mailchimp settings
     settings:
         title: Mailchimp Settings

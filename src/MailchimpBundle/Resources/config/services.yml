@@ -17,9 +17,17 @@ services:
         tags: [ 'controller.service_arguments' ]
 
     Wg\MailchimpBundle\MailchimpConfiguration: ~
+
     Wg\MailchimpBundle\ApiClient: ~
+
+    Wg\MailchimpBundle\ListOptionsProvider:
+        public: true
 
     Wg\MailchimpBundle\Command\:
         resource: '../../Command'
         tags:
             - console.command
+
+    Wg\MailchimpBundle\Twig\Extension\MailchimpExtension:
+        tags:
+            - twig.extension

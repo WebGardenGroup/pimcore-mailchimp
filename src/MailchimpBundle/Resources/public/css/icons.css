@@ -6,3 +6,6 @@
     background: url(/bundles/wgmailchimp/img/mailchimp-color.svg) center center no-repeat !important;
 }
 
+.pimcore_icon_inspect {
+    background: url(/bundles/pimcoreadmin/img/flat-color-icons/inspection.svg) center center no-repeat !important;
+}

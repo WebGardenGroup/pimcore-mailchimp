@@ -11,7 +11,7 @@ pimcore.plugin.WgMailchimpBundle = Class.create(pimcore.plugin.admin, {
 
   pimcoreReady: function () {
     if (pimcore.currentuser.permissions.indexOf('mailchimp.permission') >= 0) {
-      var layoutToolbar = pimcore.globalmanager.get('layout_toolbar')
+      const layoutToolbar = pimcore.globalmanager.get('layout_toolbar')
       if (layoutToolbar.settingsMenu) {
         layoutToolbar.settingsMenu.add(Ext.create('Ext.Action', {
           id: 'mailchimp_settings_button',
@@ -31,4 +31,5 @@ pimcore.plugin.WgMailchimpBundle = Class.create(pimcore.plugin.admin, {
   }
 })
 
-var WgMailchimpBundlePlugin = new pimcore.plugin.WgMailchimpBundle()
+// eslint-disable-next-line no-new
+new pimcore.plugin.WgMailchimpBundle()

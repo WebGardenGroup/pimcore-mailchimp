@@ -2,19 +2,25 @@
 
 namespace Wg\MailchimpBundle;
 
+use MailchimpMarketing\Api\ListsApi;
+use MailchimpMarketing\Api\PingApi;
 use MailchimpMarketing\ApiClient as BaseApiClient;
 
 use function mb_strtolower;
 use function md5;
 
+/**
+ * @property ListsApi $lists
+ * @property PingApi  $ping
+ */
 class ApiClient extends BaseApiClient
 {
     private ?array $listIds;
 
     public function __construct(MailchimpConfiguration $configuration)
     {
-        $config = $configuration->readConfig();
         parent::__construct();
+        $config = $configuration->readConfig();
         $this->setConfig([
             'apiKey' => $config['config']['api_key'],
             'server' => $config['config']['server_prefix'],
@@ -22,7 +28,7 @@ class ApiClient extends BaseApiClient
         $this->listIds = $config['config']['list_id'];
     }
 
-    public function getListIds(): array
+    public function getListIds(): ?array
     {
         return $this->listIds;
     }
