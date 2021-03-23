@@ -47,8 +47,7 @@
   "scripts": {
     "phpstan": [
       "@composer install",
-      "@phpstan-general",
-      "@phpstan-tests"
+      "@phpstan-general"
     ],
     "phpstan-general": [
       "bin/console cache:warmup --env=dev",
