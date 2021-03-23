@@ -50,7 +50,6 @@
       "@phpstan-general"
     ],
     "phpstan-general": [
-      "bin/console cache:warmup --env=dev",
       "phpstan analyse -c phpstan.neon"
     ]
   }
