@@ -54,6 +54,22 @@ Does actually the same as the update command and preferred in CI-Workflow:
 
 Configuration is accessible from the `Settings / Mailchimp Settings` on the administration panel.
 
-Through `Wg\MailchimpBundle\`
+Through [`Wgg\MailchimpBundle\ApiClient`](src/MailchimpBundle/ApiClient.php) service you can access all Mailchimp API
+functionality.
 
+You can use [`Wgg\MailchimpBundle\ListOptionsProvider`](src/MailchimpBundle/ListOptionsProvider.php) service in
+a `Select Type` for audience/list ids.
+
+From twig you can use `mailchimp_list_store` function to get access to list/audience ids and names.
+
+## Testing configuration
+
+On the admin panel there is a `Validate settings` button - you can use it to validate the configuration.
+
+From cli you can ping the Mailchimp API and get information about the configured lists:
+
+```bash
+$ bin/console wg:mailchimp:ping
+$ bin/console wg:mailchimp:get-list
+```
 
