@@ -1,12 +1,12 @@
 <?php
 
-namespace Wg\MailchimpBundle\Command;
+namespace Wgg\MailchimpBundle\Command;
 
 use Pimcore\Console\Style\PimcoreStyle;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Wg\MailchimpBundle\ApiClient;
+use Wgg\MailchimpBundle\ApiClient;
 
 class PingCommand extends Command
 {

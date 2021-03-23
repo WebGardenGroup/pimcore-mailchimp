@@ -1,5 +1,5 @@
 {
-  "name": "wgg/mailchimp-bundle",
+  "name": "wgg/pimcore-mailchimp",
   "type": "pimcore-bundle",
   "license": "Apache-2.0",
   "description": "Pimcore Mailchimp Bundle",
@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Wg\\MailchimpBundle\\": "src/MailchimpBundle/"
+      "Wgg\\MailchimpBundle\\": "src/MailchimpBundle/"
     }
   },
   "autoload-dev": {
@@ -29,7 +29,7 @@
   "extra": {
     "pimcore": {
       "bundles": [
-        "Wg\\MailchimpBundle\\WgMailchimpBundle"
+        "Wgg\\MailchimpBundle\\WgMailchimpBundle"
       ]
     }
   },
@@ -51,6 +51,11 @@
     ],
     "phpstan-general": [
       "phpstan analyse -c phpstan.neon"
+    ]
+  },
+  "archive": {
+    "exclude": [
+      "docs"
     ]
   }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Wg\MailchimpBundle\Twig\Extension;
+namespace Wgg\MailchimpBundle\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Wg\MailchimpBundle\ListOptionsProvider;
+use Wgg\MailchimpBundle\ListOptionsProvider;
 
 class MailchimpExtension extends AbstractExtension
 {

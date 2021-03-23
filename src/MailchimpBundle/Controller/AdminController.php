@@ -1,14 +1,14 @@
 <?php
 
-namespace Wg\MailchimpBundle\Controller;
+namespace Wgg\MailchimpBundle\Controller;
 
 use Exception;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Wg\MailchimpBundle\ApiClient;
-use Wg\MailchimpBundle\MailchimpConfiguration;
+use Wgg\MailchimpBundle\ApiClient;
+use Wgg\MailchimpBundle\MailchimpConfiguration;
 
 use function array_filter;
 use function is_array;

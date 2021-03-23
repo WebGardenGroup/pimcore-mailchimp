@@ -10,12 +10,6 @@ Mailchimp integration for Pimcore
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/WebGardenGroup/mailchimp-bundle.git"
-        }
-    ],
     "require": {
         "wgg/mailchimp-bundle": "dev-master"
     }
@@ -58,4 +52,8 @@ Does actually the same as the update command and preferred in CI-Workflow:
 
 ## Usage
 
-`//TODO`
+Configuration is accessible from the `Settings / Mailchimp Settings` on the administration panel.
+
+Through `Wg\MailchimpBundle\`
+
+

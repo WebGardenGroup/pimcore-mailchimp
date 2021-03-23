@@ -1,6 +1,6 @@
 <?php
 
-namespace Wg\MailchimpBundle;
+namespace Wgg\MailchimpBundle;
 
 use Pimcore\Config;
 use Pimcore\File;
