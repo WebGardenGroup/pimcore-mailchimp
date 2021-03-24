@@ -1,4 +1,4 @@
-# mailchimp-bundle
+# pimcore-mailchimp
 
 Mailchimp integration for Pimcore
 
@@ -8,12 +8,8 @@ Mailchimp integration for Pimcore
 
 ## Installation
 
-```json
-{
-    "require": {
-        "wgg/mailchimp-bundle": "dev-master"
-    }
-}
+```shell
+$ composer require wgg/pimcore-mailchimp
 ```
 
 ### Installation via Extension Manager

@@ -4,22 +4,22 @@ namespace Wgg\MailchimpBundle;
 
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 
-class WgMailchimpBundle extends AbstractPimcoreBundle
+class WggMailchimpBundle extends AbstractPimcoreBundle
 {
-    const CACHE_TAG = 'wg_mailchimp_lists';
+    const CACHE_TAG = 'wgg_mailchimp';
 
     public function getJsPaths()
     {
         return [
-            '/bundles/wgmailchimp/js/pimcore/startup.js',
-            '/bundles/wgmailchimp/js/pimcore/panel.js',
+            '/bundles/wggmailchimp/js/pimcore/startup.js',
+            '/bundles/wggmailchimp/js/pimcore/panel.js',
         ];
     }
 
     public function getCssPaths()
     {
         return [
-            '/bundles/wgmailchimp/css/icons.css',
+            '/bundles/wggmailchimp/css/icons.css',
         ];
     }
 

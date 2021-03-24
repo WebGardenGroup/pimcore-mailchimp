@@ -1,12 +1,12 @@
-pimcore.registerNS('pimcore.plugin.WgMailchimpBundle.settings')
+pimcore.registerNS('pimcore.plugin.WggMailchimpBundle.settings')
 
-pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
+pimcore.plugin.WggMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
   initialize: function () {
     this.getData()
   },
   getData: function () {
     Ext.Ajax.request({
-      url: Routing.generate('wg_mailchimp_admin_getsettings'),
+      url: Routing.generate('wgg_mailchimp_admin_getsettings'),
       success: function (response) {
         this.values = Ext.decode(response.responseText)
 
@@ -16,7 +16,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
   },
 
   getTabPanel: function () {
-    const config = this.values.config
+    const config = this.values
 
     if (!this.panel) {
       this.panel = Ext.create('Ext.panel.Panel', {
@@ -29,7 +29,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
       })
 
       this.panel.on('destroy', function () {
-        pimcore.globalmanager.remove('wg_mailchimp_settings')
+        pimcore.globalmanager.remove('wgg_mailchimp_settings')
       })
 
       const listIds = []
@@ -38,7 +38,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
         for (let i = 0; i < config.list_id.length; i++) {
           listIds.push({
             fieldLabel: 'Audience ID',
-            name: 'config.list_id',
+            name: 'list_id',
             xtype: 'textfield',
             value: config.list_id[i],
             width: 600
@@ -61,7 +61,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
           const fieldset = button.up('fieldset')
           fieldset.insert(fieldset.items.length - 2, {
             fieldLabel: 'Audience ID',
-            name: 'config.list_id',
+            name: 'list_id',
             xtype: 'textfield',
             width: 600
           })
@@ -96,7 +96,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
           {
             fieldLabel: 'API Key',
             xtype: 'textfield',
-            name: 'config.api_key',
+            name: 'api_key',
             value: config.api_key,
             width: 600,
             allowBlank: false
@@ -111,7 +111,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
           {
             fieldLabel: 'Server Prefix',
             xtype: 'textfield',
-            name: 'config.server_prefix',
+            name: 'server_prefix',
             value: config.server_prefix,
             width: 600,
             allowBlank: false
@@ -125,7 +125,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
           {
             title: 'Audience ID(s)',
             xtype: 'fieldset',
-            name: 'config.list_id',
+            name: 'list_id',
             items: listIds
           }
         ]
@@ -152,10 +152,12 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
     const values = this.layout.getForm().getFieldValues()
 
     Ext.Ajax.request({
-      url: Routing.generate('wg_mailchimp_admin_savesettings'),
+      url: Routing.generate('wgg_mailchimp_admin_savesettings'),
       method: 'PUT',
       params: {
-        data: Ext.encode(values)
+        api_key: values.api_key,
+        server_prefix: values.server_prefix,
+        list_id: values.list_id
       },
       success: function (response) {
         try {
@@ -177,7 +179,7 @@ pimcore.plugin.WgMailchimpBundle.Settings = Class.create(pimcore.plugin.admin, {
     const values = this.layout.getForm().getFieldValues()
 
     Ext.Ajax.request({
-      url: Routing.generate('wg_mailchimp_admin_validatesettings'),
+      url: Routing.generate('wgg_mailchimp_admin_validatesettings'),
       method: 'POST',
       params: {
         data: Ext.encode(values)

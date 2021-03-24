@@ -24,4 +24,6 @@ return (new Config())
             ->ignoreDotFiles(true)
             ->ignoreVCS(true)
             ->in(__DIR__.'/src')
+            ->in(__DIR__.'/tests')
+            ->exclude('project')
     );

@@ -24,12 +24,15 @@
   "autoload-dev": {
     "psr-4": {
       "Wgg\\MailchimpBundle\\Tests\\": "tests/"
-    }
+    },
+    "classmap": [
+      "tests/project/app/AppTestKernel.php"
+    ]
   },
   "extra": {
     "pimcore": {
       "bundles": [
-        "Wgg\\MailchimpBundle\\WgMailchimpBundle"
+        "Wgg\\MailchimpBundle\\WggMailchimpBundle"
       ]
     }
   },
@@ -47,14 +50,19 @@
   },
   "scripts": {
     "test": [
+      "@composer install",
       "simple-phpunit"
     ],
     "phpstan": [
       "@composer install",
-      "@phpstan-general"
+      "@phpstan-general",
+      "@phpstan-tests"
     ],
     "phpstan-general": [
       "phpstan analyse -c phpstan.neon"
+    ],
+    "phpstan-tests": [
+      "phpstan analyse -c phpstan.tests.neon"
     ]
   },
   "archive": {

@@ -1,0 +1,6 @@
+parameters:
+    secret: fakesecret
+
+pimcore:
+    cache:
+        pool_service_id: pimcore.cache.core.pool.array

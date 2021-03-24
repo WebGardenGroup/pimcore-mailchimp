@@ -1,8 +1,8 @@
-pimcore.registerNS('pimcore.plugin.WgMailchimpBundle')
+pimcore.registerNS('pimcore.plugin.WggMailchimpBundle')
 
-pimcore.plugin.WgMailchimpBundle = Class.create(pimcore.plugin.admin, {
+pimcore.plugin.WggMailchimpBundle = Class.create(pimcore.plugin.admin, {
   getClassName: function () {
-    return 'pimcore.plugin.WgMailchimpBundle'
+    return 'pimcore.plugin.WggMailchimpBundle'
   },
 
   initialize: function () {
@@ -24,12 +24,12 @@ pimcore.plugin.WgMailchimpBundle = Class.create(pimcore.plugin.admin, {
   },
   openSettings: function () {
     try {
-      pimcore.globalmanager.get('wg_mailchimp_settings').activate()
+      pimcore.globalmanager.get('wgg_mailchimp_settings').activate()
     } catch (e) {
-      pimcore.globalmanager.add('wg_mailchimp_settings', new pimcore.plugin.WgMailchimpBundle.Settings())
+      pimcore.globalmanager.add('wgg_mailchimp_settings', new pimcore.plugin.WggMailchimpBundle.Settings())
     }
   }
 })
 
 // eslint-disable-next-line no-new
-new pimcore.plugin.WgMailchimpBundle()
+new pimcore.plugin.WggMailchimpBundle()

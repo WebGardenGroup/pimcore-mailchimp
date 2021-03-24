@@ -2,16 +2,17 @@
 
 namespace Wgg\MailchimpBundle\Controller;
 
-use function array_filter;
 use Exception;
-use function is_array;
-use function json_decode;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
+
+use function array_filter;
+use function is_array;
+use function json_decode;
 
 class AdminController extends BaseAdminController
 {
@@ -40,24 +41,13 @@ class AdminController extends BaseAdminController
     public function saveSettingsAction(Request $request): JsonResponse
     {
         $this->checkPermission('mailchimp.permission');
-        $values = json_decode($request->get('data'), true);
 
-        $config = $this->cookieConfiguration->readConfig();
-        $version = $config['version'];
-        if (!$version) {
-            $version = 1;
-        } else {
-            ++$version;
-        }
+        $apiKey = $request->request->get('api_key');
+        $serverPrefix = $request->request->get('server_prefix');
+        $listIdsRaw = $request->request->get('list_id');
+        $listIds = array_filter(is_array($listIdsRaw) ? $listIdsRaw : [$listIdsRaw]);
 
-        // Google Analytics
-        $settings['config']['api_key'] = $values['config.api_key'];
-        $settings['config']['server_prefix'] = $values['config.server_prefix'];
-        $settings['config']['list_id'] = is_array($values['config.list_id']) ? array_filter($values['config.list_id']) : [$values['config.list_id']];
-
-        $settings['version'] = $version;
-
-        $this->cookieConfiguration->writeConfig($settings);
+        $this->cookieConfiguration->writeConfig($apiKey, $serverPrefix, $listIds);
 
         $output = [
             'success' => true,

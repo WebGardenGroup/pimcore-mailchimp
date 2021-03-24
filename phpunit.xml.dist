@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./tests/bootstrap.php" colors="true">
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/bin/.phpunit/phpunit/phpunit.xsd"
+    bootstrap="./tests/bootstrap.php"
+    colors="true"
+>
     <testsuites>
         <testsuite name="WgMailchimpBundle test suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="PIMCORE_PROJECT_ROOT" value="tests/project"/>
+        <env name="APP_ENV" value="test" force="true"/>
+        <env name="KERNEL_DIR" value="app"/>
+        <env name="KERNEL_CLASS" value="AppTestKernel"/>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled=1"/>
+    </php>
     <filter>
         <whitelist>
             <directory>./src</directory>

@@ -1,0 +1,5 @@
+api_key: testing
+server_prefix: testing
+list_id:
+    - testing1
+    - testing2

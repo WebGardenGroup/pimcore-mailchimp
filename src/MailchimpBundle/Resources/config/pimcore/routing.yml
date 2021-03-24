@@ -1,4 +1,4 @@
-wg_mailchimp_admin:
+wgg_mailchimp_admin:
     prefix: /admin/mailchimp
     type: annotation
-    resource: "@WgMailchimpBundle/Controller"
+    resource: "@WggMailchimpBundle/Controller"

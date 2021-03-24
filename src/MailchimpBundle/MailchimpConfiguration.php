@@ -2,22 +2,43 @@
 
 namespace Wgg\MailchimpBundle;
 
+use Pimcore\Cache;
 use Pimcore\Config;
 use Pimcore\File;
 use Symfony\Component\Yaml\Yaml;
 
 class MailchimpConfiguration
 {
+    private const CACHE_KEY = 'wgg_mailchimp_config_cache';
+
     private string $filename;
 
+    /**
+     * @return array{api_key: string, server_prefix: string, list_id: array<string>}
+     */
     public function readConfig(): array
     {
-        return Yaml::parseFile($this->getConfigFile());
+        if (!$data = Cache::load(self::CACHE_KEY)) {
+            $data = Yaml::parseFile($this->getConfigFile());
+            Cache::save($data, self::CACHE_KEY);
+        }
+
+        return $data;
     }
 
-    public function writeConfig(array $data): void
+    public function writeConfig(string $apiKey, string $serverPrefix, array $listIds): void
     {
-        File::put($this->getConfigFile(), Yaml::dump($data));
+        Cache::remove(self::CACHE_KEY);
+        Cache::clearTag(WggMailchimpBundle::CACHE_TAG);
+        File::put($this->getConfigFile(),
+            Yaml::dump([
+                'api_key' => $apiKey,
+                'server_prefix' => $serverPrefix,
+                'list_id' => $listIds,
+            ],
+                2,
+                4,
+                Yaml::DUMP_EMPTY_ARRAY_AS_SEQUENCE));
     }
 
     private function getConfigFile(): string
@@ -27,15 +48,13 @@ class MailchimpConfiguration
             if (!file_exists($this->filename)) {
                 File::put($this->filename,
                     Yaml::dump([
-                        'config' => [
-                            'api_key' => '',
-                            'server_prefix' => '',
-                            'list_id' => [],
-                        ],
-                        'version' => 0,
+                        'api_key' => '',
+                        'server_prefix' => '',
+                        'list_id' => [],
                     ],
-                        5
-                    )
+                        2,
+                        4,
+                        Yaml::DUMP_EMPTY_ARRAY_AS_SEQUENCE)
                 );
             }
         }

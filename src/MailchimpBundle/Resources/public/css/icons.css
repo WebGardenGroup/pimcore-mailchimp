@@ -1,9 +1,9 @@
 .pimcore_icon_mailchimp {
-    background: url(/bundles/wgmailchimp/img/mailchimp-white.svg) center center no-repeat !important;
+    background: url(/bundles/wggmailchimp/img/mailchimp-white.svg) center center no-repeat !important;
 }
 
 .pimcore_icon_mailchimp_color {
-    background: url(/bundles/wgmailchimp/img/mailchimp-color.svg) center center no-repeat !important;
+    background: url(/bundles/wggmailchimp/img/mailchimp-color.svg) center center no-repeat !important;
 }
 
 .pimcore_icon_inspect {

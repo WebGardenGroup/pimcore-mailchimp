@@ -2,11 +2,12 @@
 
 namespace Wgg\MailchimpBundle;
 
-use function implode;
-use function md5;
 use Pimcore\Cache;
 use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\MultiSelectOptionsProviderInterface;
 use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
+
+use function implode;
+use function md5;
 
 class ListOptionsProvider implements MultiSelectOptionsProviderInterface, SelectOptionsProviderInterface
 {
@@ -51,6 +52,7 @@ class ListOptionsProvider implements MultiSelectOptionsProviderInterface, Select
         if ($listIds) {
             $cacheKey = $this->getCacheKey($listIds);
             if (!$data = Cache::load($cacheKey)) {
+                Cache::clearTag(WggMailchimpBundle::CACHE_TAG);
                 foreach ($listIds as $listId) {
                     $list = $this->apiClient->lists->getList($listId, 'name,id');
                     $data[] = [
@@ -58,7 +60,7 @@ class ListOptionsProvider implements MultiSelectOptionsProviderInterface, Select
                         'value' => $list->id,
                     ];
                 }
-                Cache::save($data, $cacheKey, [WgMailchimpBundle::CACHE_TAG]);
+                Cache::save($data, $cacheKey, [WggMailchimpBundle::CACHE_TAG]);
             }
         }
 
