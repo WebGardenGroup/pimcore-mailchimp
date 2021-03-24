@@ -1,0 +1,48 @@
+name: Tests
+on:
+    push:
+    pull_request:
+
+jobs:
+    phpunit:
+        strategy:
+            matrix:
+                php: [ '7.4' ]
+        runs-on: ubuntu-latest
+        env:
+            extensions: json
+        steps:
+            -   name: Setup PHP cache environment
+                id: extcache
+                uses: shivammathur/cache-extensions@v1
+                with:
+                    php-version: ${{ matrix.php }}
+                    extensions: ${{ env.extensions }}
+                    key: php-extension-cache-v1
+            -   name: Cache extensions
+                uses: actions/cache@v2
+                with:
+                    path: ${{ steps.extcache.outputs.dir }}
+                    key: ${{ steps.extcache.outputs.key }}
+                    restore-keys: ${{ steps.extcache.outputs.key }}
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    coverage: none
+                    extensions: ${{ env.extensions }}
+                    ini-values: memory_limit=-1
+                    php-version: "${{ matrix.php }}"
+                    tools: pecl, composer
+            -   name: Get composer cache directory
+                id: composer-cache
+                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+            -   name: Cache dependencies
+                uses: actions/cache@v2
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: ${{ runner.os }}-composer-
+            -   name: Repository checkout
+                uses: actions/checkout@v2
+            -   name: PHPUnit
+                run: composer run-script test

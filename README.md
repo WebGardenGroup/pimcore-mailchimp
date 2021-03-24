@@ -2,6 +2,9 @@
 
 Mailchimp integration for Pimcore
 
+[![Packagist](https://img.shields.io/packagist/v/wgg/pimcore-mailchimp)](https://packagist.org/packages/wgg/pimcore-mailchimp)
+[![Software License](https://img.shields.io/packagist/l/wgg/pimcore-mailchimp)](LICENSE)
+
 #### Requirements
 
 * Pimcore >= 6.8.0

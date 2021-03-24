@@ -6,7 +6,7 @@
     colors="true"
 >
     <testsuites>
-        <testsuite name="WgMailchimpBundle test suite">
+        <testsuite name="WggMailchimpBundle test suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>

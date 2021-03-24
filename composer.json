@@ -46,15 +46,17 @@
     "phpstan/phpstan": "^0.12",
     "phpstan/phpstan-symfony": "^0.12",
     "friendsofphp/php-cs-fixer": "^2.18",
-    "symfony/phpunit-bridge": "^4.4|^5.2"
+    "symfony/phpunit-bridge": "^4.4|^5.2",
+    "phpstan/phpstan-phpunit": "^0.12.18"
   },
   "scripts": {
     "test": [
-      "@composer install",
+      "@composer install --prefer-dist --ignore-platform-reqs",
       "simple-phpunit"
     ],
     "phpstan": [
-      "@composer install",
+      "@composer install --prefer-dist --ignore-platform-reqs",
+      "simple-phpunit install",
       "@phpstan-general",
       "@phpstan-tests"
     ],

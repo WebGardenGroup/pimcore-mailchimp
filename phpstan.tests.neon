@@ -1,10 +1,13 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
 parameters:
     level: 8
     paths:
         - tests
     bootstrapFiles:
-        - ./vendor/bin/.phpunit/phpunit/vendor/autoload.php
-        - ./vendor/pimcore/pimcore/stubs/dynamic-constants.php
+        - vendor/bin/.phpunit/phpunit/vendor/autoload.php
+        - vendor/pimcore/pimcore/stubs/dynamic-constants.php
     checkMissingIterableValueType: false
     excludePaths:
         - tests/project/*
