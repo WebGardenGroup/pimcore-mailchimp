@@ -49,6 +49,63 @@ Does actually the same as the update command and preferred in CI-Workflow:
 
 - Execute: `$ bin/console pimcore:migrations:migrate -b WgMailchimpBundle`
 
+## Bundle configuration
+
+The bundle currently supports two kind of configuration storage:
+
+- [`Wgg\MailchimpBundle\Storage\FileStorage`](src/MailchimpBundle/Storage/FileStorage.php) - stores config as YAML file
+  under `PIMCORE_CONFIGURATION_DIRECTORY`
+- [`Wgg\MailchimpBundle\Storage\SettingsStoreStorage`](src/MailchimpBundle/Storage/SettingsStoreStorage.php) - stores
+  config
+  through [`SettingsStore`](https://pimcore.com/docs/pimcore/master/Development_Documentation/Development_Tools_and_Details/Settings_Store.html)
+
+You can configure it:
+
+```yaml
+# Use the FileStorage
+wgg_mailchimp:
+    storage: 'Wgg\MailchimpBundle\Storage\FileStorage' #this is the default
+```
+
+```yaml
+# Use the SettingsStore
+wgg_mailchimp:
+    storage: 'Wgg\MailchimpBundle\Storage\SettingsStoreStorage'
+```
+
+You can also implement your own storage.
+
+```php
+<?php
+
+namespace Acme;
+
+class OwnStorage implements \Wgg\MailchimpBundle\Storage\StorageInterface
+{
+    public function read(): array
+    {
+        // You own logic to get the data
+        return [];
+    }
+    
+    public function write(string $apiKey, string $serverPrefix, array $listIds): void
+    {
+        // You own logic to save the data
+    }
+}
+```
+
+```yaml
+# Use your own storage implementation
+# 1. register your class
+services:
+    Acme\OwnStorage: ~
+
+# 2. Configure the bundle to use your storage
+wgg_mailchimp:
+    storage: 'Acme\OwnStorage'
+```
+
 ## Usage
 
 Configuration is accessible from the `Settings / Mailchimp Settings` on the administration panel.
