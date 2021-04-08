@@ -24,3 +24,6 @@ services:
     Wgg\MailchimpBundle\Twig\Extension\MailchimpExtension:
         tags:
             - twig.extension
+
+    Wgg\MailchimpBundle\Storage\FileStorage: ~
+    Wgg\MailchimpBundle\Storage\SettingsStoreStorage: ~

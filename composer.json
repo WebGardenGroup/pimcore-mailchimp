@@ -26,7 +26,8 @@
       "Wgg\\MailchimpBundle\\Tests\\": "tests/"
     },
     "classmap": [
-      "tests/project/app/AppTestKernel.php"
+      "tests/project/app/AppTestKernel.php",
+      "tests/project/app/DbConnection.php"
     ]
   },
   "extra": {

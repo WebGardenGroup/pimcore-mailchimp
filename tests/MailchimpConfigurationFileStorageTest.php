@@ -5,7 +5,7 @@ namespace Wgg\MailchimpBundle\Tests;
 use Pimcore\Test\KernelTestCase;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
 
-class MailchimpConfigurationTest extends KernelTestCase
+class MailchimpConfigurationFileStorageTest extends KernelTestCase
 {
     public static function setUpBeforeClass(): void
     {
@@ -15,7 +15,7 @@ class MailchimpConfigurationTest extends KernelTestCase
     public function testReadConfigDefault(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get(MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::$container->get('file.'.MailchimpConfiguration::class);
 
         $defaultConfig = $mailchimpConfiguration->readConfig();
 
@@ -33,7 +33,7 @@ class MailchimpConfigurationTest extends KernelTestCase
     public function testWriteConfig(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get(MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::$container->get('file.'.MailchimpConfiguration::class);
 
         $apiKey = 'testing';
         $serverPrefix = 'testing';

@@ -1,6 +1,27 @@
 parameters:
     secret: fakesecret
 
+doctrine:
+    dbal:
+        connections:
+            default:
+                wrapper_class: 'DbConnection'
+                schema_filter: '~^(?!messenger_messages)~'
+                url: 'sqlite3:///%kernel.project_dir%/var/database.sqlite3'
+
 pimcore:
     cache:
         pool_service_id: pimcore.cache.core.pool.array
+
+services:
+    file.Wgg\MailchimpBundle\MailchimpConfiguration:
+        public: true
+        class: Wgg\MailchimpBundle\MailchimpConfiguration
+        arguments:
+            - '@Wgg\MailchimpBundle\Storage\FileStorage'
+
+    settingsStore.Wgg\MailchimpBundle\MailchimpConfiguration:
+        public: true
+        class: Wgg\MailchimpBundle\MailchimpConfiguration
+        arguments:
+            - '@Wgg\MailchimpBundle\Storage\SettingsStoreStorage'
