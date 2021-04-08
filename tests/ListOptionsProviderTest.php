@@ -16,7 +16,6 @@ class ListOptionsProviderTest extends KernelTestCase
 {
     public static function setUpBeforeClass(): void
     {
-        self::bootKernel();
         copy(__DIR__.'/fixtures/mailchimp.yml', PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml');
     }
 
@@ -66,6 +65,7 @@ class ListOptionsProviderTest extends KernelTestCase
 
     protected function setUp(): void
     {
+        self::bootKernel();
         $this->createApiClientMock();
     }
 
