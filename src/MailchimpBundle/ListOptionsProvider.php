@@ -2,12 +2,11 @@
 
 namespace Wgg\MailchimpBundle;
 
+use function implode;
+use function md5;
 use Pimcore\Cache;
 use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\MultiSelectOptionsProviderInterface;
 use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
-
-use function implode;
-use function md5;
 
 class ListOptionsProvider implements MultiSelectOptionsProviderInterface, SelectOptionsProviderInterface
 {

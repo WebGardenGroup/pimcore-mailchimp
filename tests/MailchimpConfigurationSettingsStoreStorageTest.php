@@ -2,12 +2,11 @@
 
 namespace Wgg\MailchimpBundle\Tests;
 
+use function implode;
 use Pimcore\Model\Tool\SettingsStore;
 use Pimcore\Test\KernelTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
-
-use function implode;
 
 class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
 {

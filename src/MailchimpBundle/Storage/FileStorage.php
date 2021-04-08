@@ -2,11 +2,10 @@
 
 namespace Wgg\MailchimpBundle\Storage;
 
+use function file_exists;
 use Pimcore\Config;
 use Pimcore\File;
 use Symfony\Component\Yaml\Yaml;
-
-use function file_exists;
 
 class FileStorage implements StorageInterface
 {

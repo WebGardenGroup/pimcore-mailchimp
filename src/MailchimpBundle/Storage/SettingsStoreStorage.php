@@ -2,10 +2,9 @@
 
 namespace Wgg\MailchimpBundle\Storage;
 
-use Pimcore\Model\Tool\SettingsStore;
-
 use function explode;
 use function implode;
+use Pimcore\Model\Tool\SettingsStore;
 
 class SettingsStoreStorage implements StorageInterface
 {

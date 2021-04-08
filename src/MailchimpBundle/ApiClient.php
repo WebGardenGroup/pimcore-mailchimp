@@ -5,7 +5,6 @@ namespace Wgg\MailchimpBundle;
 use MailchimpMarketing\Api\ListsApi;
 use MailchimpMarketing\Api\PingApi;
 use MailchimpMarketing\ApiClient as BaseApiClient;
-
 use function mb_strtolower;
 use function md5;
 

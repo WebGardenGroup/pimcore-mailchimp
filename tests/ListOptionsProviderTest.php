@@ -7,10 +7,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Pimcore\Test\KernelTestCase;
 use stdClass;
 use Symfony\Component\Filesystem\Filesystem;
+use function ucfirst;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\ListOptionsProvider;
-
-use function ucfirst;
 
 class ListOptionsProviderTest extends KernelTestCase
 {
