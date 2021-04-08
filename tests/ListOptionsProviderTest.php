@@ -6,24 +6,30 @@ use MailchimpMarketing\Api\ListsApi;
 use PHPUnit\Framework\MockObject\MockObject;
 use Pimcore\Test\KernelTestCase;
 use stdClass;
+use Symfony\Component\Filesystem\Filesystem;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\ListOptionsProvider;
 
-use function copy;
 use function ucfirst;
 
 class ListOptionsProviderTest extends KernelTestCase
 {
-    public static function setUpBeforeClass(): void
+    private Filesystem $fs;
+
+    protected function setUp(): void
     {
-        copy(__DIR__.'/fixtures/mailchimp.yml', PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml');
+        parent::setUp();
+        self::bootKernel();
+        $this->fs = new Filesystem();
+        $this->fs->copy(__DIR__.'/fixtures/mailchimp.yml', PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml', true);
+
+        $this->createApiClientMock();
     }
 
-    public static function tearDownAfterClass(): void
+    protected function tearDown(): void
     {
-        if (file_exists(PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml')) {
-            @unlink(PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml');
-        }
+        $this->fs->remove(PIMCORE_CONFIGURATION_DIRECTORY.'/mailchimp.yml');
+        parent::tearDown();
     }
 
     public function testGetRawOptions(): void
@@ -61,12 +67,6 @@ class ListOptionsProviderTest extends KernelTestCase
             ],
         ],
             $options);
-    }
-
-    protected function setUp(): void
-    {
-        self::bootKernel();
-        $this->createApiClientMock();
     }
 
     private function createApiClientMock(): void

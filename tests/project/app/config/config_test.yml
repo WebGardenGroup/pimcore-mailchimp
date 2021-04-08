@@ -13,6 +13,9 @@ pimcore:
     cache:
         pool_service_id: pimcore.cache.core.pool.array
 
+wgg_mailchimp:
+    storage: Wgg\MailchimpBundle\Storage\FileStorage
+
 services:
     file.Wgg\MailchimpBundle\MailchimpConfiguration:
         public: true

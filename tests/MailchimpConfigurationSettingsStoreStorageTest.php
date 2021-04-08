@@ -13,6 +13,20 @@ class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
 {
     private Filesystem $fs;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::bootKernel();
+        $this->fs = new Filesystem();
+        $this->fs->copy(__DIR__.'/fixtures/database.sqlite3', PIMCORE_PRIVATE_VAR.'/database.sqlite3', true);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->fs->remove(PIMCORE_PRIVATE_VAR.'/database.sqlite3');
+    }
+
     public function testReadConfigDefault(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
@@ -55,19 +69,5 @@ class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
         $dbListIdObject = SettingsStore::get('list_id', 'wgg_mailchimp');
         $this->assertNotNull($dbListIdObject);
         $this->assertSame(implode(',', $listIds), $dbListIdObject->getData());
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        self::bootKernel();
-        $this->fs = new Filesystem();
-        $this->fs->copy(__DIR__.'/fixtures/database.sqlite3', PIMCORE_PRIVATE_VAR.'/database.sqlite3');
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        $this->fs->remove(PIMCORE_PRIVATE_VAR.'/database.sqlite3');
     }
 }
