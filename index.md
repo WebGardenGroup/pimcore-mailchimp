@@ -1,44 +1,46 @@
-## Installation
+## WGG/PIMCORE-MAILCHIMP
+
+### Installation
 
 ```shell
 $ composer require wgg/pimcore-mailchimp
 ```
 
-### Installation via Extension Manager
+#### Via Extension Manager
 
 After you have installed the Mailchimp Bundle via composer, open Pimcore backend and go to `Tools` => `Bundles`:
 
 - Click the green `+` Button in `Enable / Disable` row
 - Click the green `+` Button in `Install / Uninstall` row
 
-### Installation via CommandLine
+#### Via CommandLine
 
 After you have installed the Mailchimp Bundle via composer:
 
 - Execute: `$ bin/console pimcore:bundle:enable WggMailchimpBundle`
 - Execute: `$ bin/console pimcore:bundle:install WggMailchimpBundle`
 
-## Upgrading
+### Upgrading
 
-### Upgrading via Extension Manager
+#### Upgrading via Extension Manager
 
 After you have updated the Mailchimp Bundle via composer, open Pimcore backend and go to `Tools` => `Bundles`:
 
 - Click the green `+` Button in `Update` row
 
-### Upgrading via CommandLine
+#### Upgrading via CommandLine
 
 After you have updated the Mailchimp Bundle via composer:
 
 - Execute: `$ bin/console pimcore:bundle:update WggMailchimpBundle`
 
-### Migrate via CommandLine
+#### Migrate via CommandLine
 
 Does actually the same as the update command and preferred in CI-Workflow:
 
 - Execute: `$ bin/console pimcore:migrations:migrate -b WggMailchimpBundle`
 
-## Bundle configuration
+### Bundle configuration
 
 The bundle currently supports two kind of configuration storage:
 
@@ -95,7 +97,7 @@ wgg_mailchimp:
   storage: 'Acme\OwnStorage'
 ```
 
-## Usage
+### Usage
 
 Configuration is accessible from the `Settings / Mailchimp Settings` on the administration panel.
 
@@ -108,7 +110,7 @@ service in a `Select Type` for audience/list ids.
 
 From twig you can use `mailchimp_list_store` function to get access to list/audience ids and names.
 
-## Testing configuration
+### Testing configuration
 
 On the admin panel there is a `Validate settings` button - you can use it to validate the configuration.
 
