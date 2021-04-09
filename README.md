@@ -26,8 +26,8 @@ After you have installed the Mailchimp Bundle via composer, open Pimcore backend
 
 After you have installed the Mailchimp Bundle via composer:
 
-- Execute: `$ bin/console pimcore:bundle:enable WgMailchimpBundle`
-- Execute: `$ bin/console pimcore:bundle:install WgMailchimpBundle`
+- Execute: `$ bin/console pimcore:bundle:enable WggMailchimpBundle`
+- Execute: `$ bin/console pimcore:bundle:install WggMailchimpBundle`
 
 ## Upgrading
 
@@ -41,13 +41,13 @@ After you have updated the Mailchimp Bundle via composer, open Pimcore backend a
 
 After you have updated the Mailchimp Bundle via composer:
 
-- Execute: `$ bin/console pimcore:bundle:update WgMailchimpBundle`
+- Execute: `$ bin/console pimcore:bundle:update WggMailchimpBundle`
 
 ### Migrate via CommandLine
 
 Does actually the same as the update command and preferred in CI-Workflow:
 
-- Execute: `$ bin/console pimcore:migrations:migrate -b WgMailchimpBundle`
+- Execute: `$ bin/console pimcore:migrations:migrate -b WggMailchimpBundle`
 
 ## Bundle configuration
 
