@@ -1,4 +1,4 @@
-# pimcore-mailchimp
+<p align="center"><img width="600" alt="pimcore-mailchimp" src="images/logo_fullcolor.svg?raw=true" /></p>
 
 Mailchimp integration for Pimcore
 
