@@ -2,16 +2,17 @@
 
 namespace Wgg\MailchimpBundle\Controller;
 
-use function array_filter;
 use Exception;
-use function is_array;
-use function json_decode;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
+
+use function array_filter;
+use function is_array;
+use function json_decode;
 
 class AdminController extends BaseAdminController
 {
@@ -64,13 +65,13 @@ class AdminController extends BaseAdminController
         $values = json_decode($request->get('data'), true);
 
         $this->apiClient->setConfig([
-            'apiKey' => $values['config.api_key'],
-            'server' => $values['config.server_prefix'],
+            'apiKey' => $values['api_key'],
+            'server' => $values['server_prefix'],
         ]);
 
         try {
             $this->apiClient->ping->get();
-            $listIds = is_array($values['config.list_id']) ? array_filter($values['config.list_id']) : [$values['config.list_id']];
+            $listIds = is_array($values['list_id']) ? array_filter($values['list_id']) : [$values['list_id']];
             foreach ($listIds as $listId) {
                 $this->apiClient->lists->getList($listId, 'id');
             }
