@@ -1,0 +1,2 @@
+wgg_mailchimp:
+    storage: Wgg\MailchimpBundle\Storage\FileStorage

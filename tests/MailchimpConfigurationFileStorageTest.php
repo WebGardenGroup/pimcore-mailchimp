@@ -26,7 +26,7 @@ class MailchimpConfigurationFileStorageTest extends KernelTestCase
     public function testReadConfigDefault(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get('file.'.MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::getContainer()->get('file.'.MailchimpConfiguration::class);
 
         $defaultConfig = $mailchimpConfiguration->readConfig();
 
@@ -44,7 +44,7 @@ class MailchimpConfigurationFileStorageTest extends KernelTestCase
     public function testWriteConfig(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get('file.'.MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::getContainer()->get('file.'.MailchimpConfiguration::class);
 
         $apiKey = 'testing';
         $serverPrefix = 'testing';

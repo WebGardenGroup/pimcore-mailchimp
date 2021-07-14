@@ -7,9 +7,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Pimcore\Test\KernelTestCase;
 use stdClass;
 use Symfony\Component\Filesystem\Filesystem;
-use function ucfirst;
 use Wgg\MailchimpBundle\ApiClient;
 use Wgg\MailchimpBundle\ListOptionsProvider;
+
+use function ucfirst;
 
 class ListOptionsProviderTest extends KernelTestCase
 {
@@ -34,10 +35,10 @@ class ListOptionsProviderTest extends KernelTestCase
     public function testGetRawOptions(): void
     {
         /** @var ListOptionsProvider $listOptionsProvider */
-        $listOptionsProvider = self::$container->get(ListOptionsProvider::class);
+        $listOptionsProvider = self::getContainer()->get(ListOptionsProvider::class);
 
         /** @var ApiClient $apiClient */
-        $apiClient = self::$container->get(ApiClient::class);
+        $apiClient = self::getContainer()->get(ApiClient::class);
 
         /** @var MockObject $listsApi */
         $listsApi = $apiClient->lists;
@@ -71,7 +72,7 @@ class ListOptionsProviderTest extends KernelTestCase
     private function createApiClientMock(): void
     {
         /** @var ApiClient $apiClient */
-        $apiClient = self::$container->get(ApiClient::class);
+        $apiClient = self::getContainer()->get(ApiClient::class);
         $apiClient->lists = $this->createMock(ListsApi::class);
     }
 }

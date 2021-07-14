@@ -26,8 +26,8 @@
       "Wgg\\MailchimpBundle\\Tests\\": "tests/"
     },
     "classmap": [
-      "tests/project/app/AppTestKernel.php",
-      "tests/project/app/DbConnection.php"
+      "tests/project/AppTestKernel.php",
+      "tests/project/DbConnection.php"
     ]
   },
   "extra": {
@@ -38,9 +38,9 @@
     }
   },
   "require": {
-    "php": ">=7.4",
+    "php": "^8.0",
     "ext-json": "*",
-    "pimcore/pimcore": "^6.0",
+    "pimcore/pimcore": ">=10.0.0",
     "mailchimp/marketing": "^3.0.0"
   },
   "require-dev": {

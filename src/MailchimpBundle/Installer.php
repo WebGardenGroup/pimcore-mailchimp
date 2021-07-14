@@ -12,17 +12,12 @@ class Installer extends AbstractInstaller
         'mailchimp.permission',
     ];
 
-    public function canBeInstalled()
+    public function canBeInstalled(): bool
     {
         return true;
     }
 
-    public function canBeUninstalled()
-    {
-        return true;
-    }
-
-    public function canBeUpdated()
+    public function canBeUninstalled(): bool
     {
         return true;
     }

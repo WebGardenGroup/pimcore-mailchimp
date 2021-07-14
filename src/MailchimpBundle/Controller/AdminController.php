@@ -42,8 +42,11 @@ class AdminController extends BaseAdminController
     {
         $this->checkPermission('mailchimp.permission');
 
-        $apiKey = $request->request->get('api_key');
-        $serverPrefix = $request->request->get('server_prefix');
+        /** @phpstan-var string $apiKey */
+        $apiKey = $request->request->get('api_key') ?? '';
+        /** @phpstan-var string $serverPrefix */
+        $serverPrefix = $request->request->get('server_prefix') ?? '';
+        /** @phpstan-var array|string $listIdsRaw */
         $listIdsRaw = $request->request->get('list_id');
         $listIds = array_filter(is_array($listIdsRaw) ? $listIdsRaw : [$listIdsRaw]);
 

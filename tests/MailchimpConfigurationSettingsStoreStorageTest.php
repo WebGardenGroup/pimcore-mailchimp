@@ -2,11 +2,12 @@
 
 namespace Wgg\MailchimpBundle\Tests;
 
-use function implode;
 use Pimcore\Model\Tool\SettingsStore;
 use Pimcore\Test\KernelTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use Wgg\MailchimpBundle\MailchimpConfiguration;
+
+use function implode;
 
 class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
 {
@@ -29,7 +30,7 @@ class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
     public function testReadConfigDefault(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get('settingsStore.'.MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::getContainer()->get('settingsStore.'.MailchimpConfiguration::class);
 
         $defaultConfig = $mailchimpConfiguration->readConfig();
 
@@ -49,7 +50,7 @@ class MailchimpConfigurationSettingsStoreStorageTest extends KernelTestCase
     public function testWriteConfig(): void
     {
         /** @var MailchimpConfiguration $mailchimpConfiguration */
-        $mailchimpConfiguration = self::$container->get('settingsStore.'.MailchimpConfiguration::class);
+        $mailchimpConfiguration = self::getContainer()->get('settingsStore.'.MailchimpConfiguration::class);
 
         $apiKey = 'testing';
         $serverPrefix = 'testing';
