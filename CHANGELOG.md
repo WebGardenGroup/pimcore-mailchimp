@@ -1,3 +1,7 @@
+### [2.0] 2021-07-16
+
+* Pimcore X compatible version
+
 ### [1.1] 2021-04-08
 
 * Refactored configuration storage to be extendable

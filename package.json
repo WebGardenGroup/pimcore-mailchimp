@@ -1,16 +1,10 @@
 {
-  "name": "@wgg/mailchimp-bundle",
-  "version": "1.0.0",
-  "description": "Mailchimp integration for Pimcore",
+  "private": "true",
   "scripts": {
-    "lint": "eslint -c .eslintrc.js src/MailchimpBundle/Resources/public/js"
+    "lint": "eslint -c .eslintrc.js Resources/public/js"
   },
   "author": "WebGarden",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WebGardenGroup/mailchimp-bundle/issues"
-  },
-  "homepage": "https://github.com/WebGardenGroup/mailchimp-bundle#readme",
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2"

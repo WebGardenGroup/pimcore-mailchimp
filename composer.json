@@ -18,16 +18,19 @@
   ],
   "autoload": {
     "psr-4": {
-      "Wgg\\MailchimpBundle\\": "src/MailchimpBundle/"
-    }
+      "Wgg\\MailchimpBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
-      "Wgg\\MailchimpBundle\\Tests\\": "tests/"
+      "Wgg\\MailchimpBundle\\Tests\\": "/Tests/"
     },
-    "classmap": [
-      "tests/project/AppTestKernel.php",
-      "tests/project/DbConnection.php"
+    "files": [
+      "./Tests/project/src/Kernel.php",
+      "./Tests/project/src/DbConnection.php"
     ]
   },
   "extra": {
@@ -40,7 +43,7 @@
   "require": {
     "php": "^8.0",
     "ext-json": "*",
-    "pimcore/pimcore": ">=10.0.0",
+    "pimcore/pimcore": "^10.0.0",
     "mailchimp/marketing": "^3.0.0"
   },
   "require-dev": {
@@ -70,7 +73,9 @@
   },
   "archive": {
     "exclude": [
-      "docs"
+      "/.github",
+      "/images",
+      "/Tests"
     ]
   }
 }

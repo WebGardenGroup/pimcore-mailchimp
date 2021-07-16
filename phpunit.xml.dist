@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="vendor/bin/.phpunit/phpunit.xsd" bootstrap="./tests/bootstrap.php"
+         xsi:noNamespaceSchemaLocation="vendor/bin/.phpunit/phpunit.xsd"
+         bootstrap="./Tests/bootstrap.php"
          colors="true">
     <coverage>
         <include>
@@ -9,13 +10,13 @@
     </coverage>
     <testsuites>
         <testsuite name="WggMailchimpBundle test suite">
-            <directory>./tests</directory>
+            <directory>./Tests</directory>
         </testsuite>
     </testsuites>
     <php>
-        <env name="PIMCORE_PROJECT_ROOT" value="tests/project"/>
+        <env name="PIMCORE_PROJECT_ROOT" value="Tests/project"/>
         <env name="APP_ENV" value="test" force="true"/>
-        <env name="KERNEL_CLASS" value="AppTestKernel"/>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled=1"/>
     </php>
 </phpunit>

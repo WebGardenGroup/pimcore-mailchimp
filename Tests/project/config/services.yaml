@@ -1,0 +1,18 @@
+parameters:
+    secret: fakesecret
+
+services:
+    file.Wgg\MailchimpBundle\Util\MailchimpConfiguration:
+        public: true
+        class: Wgg\MailchimpBundle\Util\MailchimpConfiguration
+        arguments:
+            - '@Wgg\MailchimpBundle\Storage\FileStorage'
+
+    settingsStore.Wgg\MailchimpBundle\Util\MailchimpConfiguration:
+        public: true
+        class: Wgg\MailchimpBundle\Util\MailchimpConfiguration
+        arguments:
+            - '@Wgg\MailchimpBundle\Storage\SettingsStoreStorage'
+
+    pimcore.cache.pool:
+        alias: '@pimcore.cache.adapter.null_tag_aware'

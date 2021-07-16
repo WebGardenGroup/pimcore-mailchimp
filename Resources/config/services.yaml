@@ -1,0 +1,29 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Wgg\MailchimpBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: [ 'controller.service_arguments' ]
+
+    Wgg\MailchimpBundle\Util\MailchimpConfiguration: ~
+
+    Wgg\MailchimpBundle\Util\ApiClient: ~
+
+    Wgg\MailchimpBundle\Util\ListOptionsProvider:
+        public: true
+
+    Wgg\MailchimpBundle\Command\:
+        resource: '../../Command'
+        tags:
+            - console.command
+
+    Wgg\MailchimpBundle\Twig\Extension\MailchimpExtension:
+        tags:
+            - twig.extension
+
+    Wgg\MailchimpBundle\Storage\FileStorage: ~
+    Wgg\MailchimpBundle\Storage\SettingsStoreStorage: ~

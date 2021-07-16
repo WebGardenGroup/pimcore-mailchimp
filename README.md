@@ -1,4 +1,4 @@
-<p align="center"><img width="600" alt="pimcore-mailchimp" src="images/logo_fullcolor.svg?raw=true" /></p>
+<p align="center"><img width="600" alt="pimcore-mailchimp" src="./images/logo_fullcolor.svg?raw=true" /></p>
 
 Mailchimp integration for Pimcore
 
@@ -7,12 +7,12 @@ Mailchimp integration for Pimcore
 
 #### Requirements
 
-* Pimcore >= 6.8.0
+* Pimcore X (^10.0.0)
 
 ## Installation
 
 ```shell
-$ composer require wgg/pimcore-mailchimp
+$ composer require wgg/pimcore-x-mailchimp
 ```
 
 ### Installation via Extension Manager
@@ -53,10 +53,9 @@ Does actually the same as the update command and preferred in CI-Workflow:
 
 The bundle currently supports two kind of configuration storage:
 
-- [`Wgg\MailchimpBundle\Storage\FileStorage`](src/MailchimpBundle/Storage/FileStorage.php) - stores config as YAML file
+- [`Wgg\MailchimpBundle\Storage\FileStorage`](Storage/FileStorage.php) - stores config as YAML file
   under `PIMCORE_CONFIGURATION_DIRECTORY`
-- [`Wgg\MailchimpBundle\Storage\SettingsStoreStorage`](src/MailchimpBundle/Storage/SettingsStoreStorage.php) - stores
-  config
+- [`Wgg\MailchimpBundle\Storage\SettingsStoreStorage`](Storage/SettingsStoreStorage.php) - stores config
   through [`SettingsStore`](https://pimcore.com/docs/pimcore/master/Development_Documentation/Development_Tools_and_Details/Settings_Store.html)
 
 You can configure it:
@@ -110,11 +109,11 @@ wgg_mailchimp:
 
 Configuration is accessible from the `Settings / Mailchimp Settings` on the administration panel.
 
-Through [`Wgg\MailchimpBundle\ApiClient`](src/MailchimpBundle/ApiClient.php) service you can access all Mailchimp API
+Through [`Wgg\MailchimpBundle\Util\ApiClient`](Util/ApiClient.php) service you can access all Mailchimp API
 functionality.
 
-You can use [`Wgg\MailchimpBundle\ListOptionsProvider`](src/MailchimpBundle/ListOptionsProvider.php) service in
-a `Select Type` for audience/list ids.
+You can use [`Wgg\MailchimpBundle\Util\ListOptionsProvider`](Util/ListOptionsProvider.php) service in a `Select Type`
+for audience/list ids.
 
 From twig you can use `mailchimp_list_store` function to get access to list/audience ids and names.
 
