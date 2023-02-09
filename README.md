@@ -1,3 +1,11 @@
+## WARNING: This repository is abandoned
+
+There is no active support on it.
+
+Feel free to ask if you want to help to keep this project up to date.
+
+---
+
 <p align="center"><img width="600" alt="pimcore-mailchimp" src="./images/logo_fullcolor.svg?raw=true" /></p>
 
 Mailchimp integration for Pimcore
